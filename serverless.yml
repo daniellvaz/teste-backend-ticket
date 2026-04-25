@@ -1,0 +1,18 @@
+org: danielmurilo
+service: teste-backend-ticket
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: sa-east-1
+
+functions:
+  listAllRequests:
+    handler: src/handlers/requests/list-all.handler
+    events:
+      - httpApi:
+          path: /requests
+          method: get

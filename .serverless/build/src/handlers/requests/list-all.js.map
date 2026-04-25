@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../src/handlers/requests/list-all.ts"],
+  "sourcesContent": ["export async function handler() {\n  return {\n    statusCode: 200,\n    body: JSON.stringify({\n      message: \"List all requests\",\n    }),\n  };\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,eAAsB,UAAU;AAC9B,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM,KAAK,UAAU;AAAA,MACnB,SAAS;AAAA,IACX,CAAC;AAAA,EACH;AACF;",
+  "names": []
+}

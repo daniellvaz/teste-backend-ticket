@@ -1,4 +1,4 @@
-import { RequestGetway } from "@/domains/getways/request.getway";
+import { RequestGetway } from "@/domains/gateways/request.gateway";
 import { NotFound } from "@/infra/http/errors/NotFound";
 import { UseCase } from "@/usecases/usecase";
 import {

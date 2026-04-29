@@ -7,7 +7,7 @@ import {
   ListRequestOutputDTO,
   ListRequestsInputDTO,
   RequestGetway,
-} from "@/domains/getways/request.getway";
+} from "@/domains/gateways/request.gateway";
 
 import { CreateRequestDTO } from "@/domains/dtos/create-request.dto";
 

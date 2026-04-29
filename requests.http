@@ -1,0 +1,22 @@
+### Get all requests by user-2
+GET http://localhost:3000/requests?createdBy=user-2
+
+### Get all requests by priority medium
+GET http://localhost:3000/requests?priority=low
+
+### Get all requests
+GET http://localhost:3000/requests?page=1&perPage=10
+
+### Get one request
+GET http://localhost:3000/requests/ipjhy4t7mfoddh52tobrcehv
+
+### Create a request
+POST http://localhost:3000/requests
+Content-Type: application/json
+
+{
+  "title": "Request title",
+  "description": "Request description",
+  "priority": "high",
+  "createdBy": "user-2"
+}

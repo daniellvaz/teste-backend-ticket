@@ -11,8 +11,20 @@ provider:
 
 functions:
   listAllRequests:
-    handler: src/handlers/requests/list-all.handler
+    handler: src/functions/requests/list.handler
     events:
       - httpApi:
           path: /requests
           method: get
+  listOneRequest:
+    handler: src/functions/requests/list-one.handler
+    events:
+      - httpApi:
+          path: /requests/{id}
+          method: get
+  createRequest:
+    handler: src/functions/requests/create.handler
+    events:
+      - httpApi:
+          path: /requests
+          method: post

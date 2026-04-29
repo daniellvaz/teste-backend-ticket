@@ -1,7 +1,7 @@
 export const RequestPriority = {
-  LOW: "low",
-  MEDIUM: "medium",
-  HIGH: "high",
+  low: "low",
+  medium: "medium",
+  high: "high",
 } as const;
 
 export type RequestPriority =

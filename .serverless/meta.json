@@ -12,18 +12,38 @@
       "provider": {
         "name": "aws",
         "runtime": "nodejs22.x",
-        "region": "us-east-1",
-        "stage": "dev",
-        "versionFunctions": true
+        "region": "sa-east-1"
       },
       "functions": {
         "listAllRequests": {
-          "handler": "src/handlers/requests/list-all.handler",
+          "handler": "src/functions/requests/list.handler",
           "events": [
             {
               "httpApi": {
                 "path": "/requests",
                 "method": "get"
+              }
+            }
+          ]
+        },
+        "listOneRequest": {
+          "handler": "src/functions/requests/list-one.handler",
+          "events": [
+            {
+              "httpApi": {
+                "path": "/requests/{id}",
+                "method": "get"
+              }
+            }
+          ]
+        },
+        "createRequest": {
+          "handler": "src/functions/requests/create.handler",
+          "events": [
+            {
+              "httpApi": {
+                "path": "/requests",
+                "method": "post"
               }
             }
           ]
@@ -33,33 +53,17 @@
     "provider": {
       "name": "aws",
       "runtime": "nodejs22.x",
-      "region": "us-east-1",
-      "stage": "dev",
-      "versionFunctions": true
-    },
-    "dashboard": {
-      "isEnabledForService": false,
-      "requiredAuthentication": false,
-      "orgFeaturesInUse": null,
-      "orgObservabilityIntegrations": null,
-      "serviceAppId": null,
-      "serviceProvider": null,
-      "instanceParameters": null
+      "region": "sa-east-1"
     },
     "error": {
-      "message": "Serverless command \"serverless-offline\" not found. Run \"serverless help\" for a list of all available commands.",
-      "code": "UNRECOGNIZED_CLI_COMMAND"
+      "message": "Unable to reach the Serverless API (fetch failed; Connect Timeout Error (attempted addresses: 44.205.138.199:443, 34.237.183.253:443, timeout: 10000ms); code: UND_ERR_CONNECT_TIMEOUT).\nPlease verify your network connection and try again.",
+      "code": "AUTH_FAILED"
     },
-    "serviceRawFile": "org: danielmurilo\nservice: teste-backend-ticket\n\nplugins:\n  - serverless-offline\n\nprovider:\n  name: aws\n  runtime: nodejs22.x\n  region:\n\nfunctions:\n  listAllRequests:\n    handler: src/handlers/requests/list-all.handler\n    events:\n      - httpApi:\n          path: /requests\n          method: get\n",
+    "serviceRawFile": "org: danielmurilo\nservice: teste-backend-ticket\n\nplugins:\n  - serverless-offline\n\nprovider:\n  name: aws\n  runtime: nodejs22.x\n  region: sa-east-1\n\nfunctions:\n  listAllRequests:\n    handler: src/functions/requests/list.handler\n    events:\n      - httpApi:\n          path: /requests\n          method: get\n  listOneRequest:\n    handler: src/functions/requests/list-one.handler\n    events:\n      - httpApi:\n          path: /requests/{id}\n          method: get\n  createRequest:\n    handler: src/functions/requests/create.handler\n    events:\n      - httpApi:\n          path: /requests\n          method: post\n",
     "command": [
-      "serverless-offline"
+      "offline"
     ],
     "options": {},
-    "orgId": "87961487-d9ab-4493-9e0c-6bc69a143dd4",
-    "orgName": "danielmurilo",
-    "userId": "VKyq9qzhb8gpnZvXgX",
-    "userName": "danielmurilo",
-    "serviceProviderAwsAccountId": "914740980869",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:914740980869:stack/teste-backend-ticket-dev/40d5aac0-40e1-11f1-be52-0e2ac2a78bab",
     "serviceProviderAwsCfStackCreated": "2026-04-25T19:59:22.589Z",
     "serviceProviderAwsCfStackUpdated": null,

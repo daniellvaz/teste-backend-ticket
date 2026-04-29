@@ -7,10 +7,12 @@ export const requests = pgTable("requests", {
   id: text()
     .primaryKey()
     .$default(() => createId()),
-  title: text(),
-  description: text(),
-  priority: priorityEnum(),
-  createdBy: text(),
+  title: text().notNull(),
+  description: text().notNull(),
+  priority: priorityEnum()
+    .notNull()
+    .$default(() => "low"),
+  createdBy: text().notNull(),
   createdAt: timestamp().defaultNow(),
   updatedAt: timestamp().$onUpdate(() => new Date()),
 });

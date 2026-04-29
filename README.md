@@ -4,13 +4,13 @@ API Backend serverless para gerenciamento de requisições e tickets, desenvolvi
 
 ## 📋 Sumário
 
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Execução Local](#execução-local)
-- [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
-- [Exemplos de Requests](#exemplos-de-requests)
-- [Deploy](#deploy)
-- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Requisitos](#-requisitos)
+- [Instalação](#-instalação)
+- [Execução Local](#-execução-local)
+- [Configuração do Banco de Dados](#️-configuração-do-banco-de-dados)
+- [Exemplos de Requests](#-exemplos-de-requests)
+- [Deploy](#-deploy)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
 
 ## 📦 Requisitos
 

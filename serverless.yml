@@ -8,6 +8,25 @@ provider:
   name: aws
   runtime: nodejs22.x
   region: sa-east-1
+  stage: ${opt:stage, 'dev'}
+
+  environment:
+    DATABASE_URL:
+      Fn::Join:
+        - ""
+        - - "postgresql://"
+          - ${self:custom.dbUser}
+          - ":"
+          - ${self:custom.dbPassword}
+          - "@"
+          - Fn::GetAtt: [RdsInstance, Endpoint.Address]
+          - ":5432/"
+          - ${self:custom.dbName}
+
+custom:
+  dbName: testebackenddb
+  dbUser: postgres
+  dbPassword: ${ssm:/teste-backend-ticket/db/password}
 
 functions:
   listAllRequests:
@@ -16,15 +35,41 @@ functions:
       - httpApi:
           path: /requests
           method: get
+
   listOneRequest:
     handler: src/functions/requests/list-one.handler
     events:
       - httpApi:
           path: /requests/{id}
           method: get
+
   createRequest:
     handler: src/functions/requests/create.handler
     events:
       - httpApi:
           path: /requests
           method: post
+
+resources:
+  Resources:
+    RdsInstance:
+      Type: AWS::RDS::DBInstance
+      Properties:
+        DBInstanceIdentifier: teste-backend-ticket-db-${self:provider.stage}
+        DBInstanceClass: db.t3.micro
+        Engine: postgres
+        MasterUsername: ${self:custom.dbUser}
+        MasterUserPassword: ${self:custom.dbPassword}
+        AllocatedStorage: 20
+        StorageType: gp2
+        DBName: ${self:custom.dbName}
+        PubliclyAccessible: true
+        BackupRetentionPeriod: 7
+        MultiAZ: false
+        EnableCloudwatchLogsExports:
+          - postgresql
+        Tags:
+          - Key: Name
+            Value: teste-backend-ticket-db
+          - Key: Environment
+            Value: ${self:provider.stage}

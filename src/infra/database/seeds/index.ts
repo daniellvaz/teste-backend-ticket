@@ -1,12 +1,11 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { reset, seed } from "drizzle-seed";
 
-import { env } from "@/infra/config/env";
-
+import { pool } from "..";
 import { requests } from "../schemas";
 
 (async () => {
-  const database = drizzle(env.DATABASE_URL, {
+  const database = drizzle(pool, {
     schema: { requests },
     casing: "snake_case",
   });

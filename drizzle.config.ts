@@ -6,11 +6,11 @@ export default defineConfig({
   out: "./src/infra/database/migrations",
   schema: "./src/infra/database/schemas/index.ts",
   dialect: "postgresql",
+  migrations: {
+    schema: "public",
+  },
   dbCredentials: {
     url: process.env.DATABASE_URL!,
-    ssl: {
-      rejectUnauthorized: false,
-    },
   },
   casing: "snake_case",
   verbose: true,

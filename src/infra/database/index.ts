@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import { env } from "@/infra/config/env";
 
 import { Pool } from "pg";
-import * as schemas from "./schemas";
+import * as schema from "./schemas";
 
 export const pool = new Pool({
   connectionString: env.DATABASE_URL,
@@ -13,8 +13,8 @@ export const pool = new Pool({
 });
 
 export const database = drizzle(pool, {
-  schema: schemas,
+  schema,
   casing: "snake_case",
 });
 
-export type Schema = typeof schemas;
+export type Schema = typeof schema;

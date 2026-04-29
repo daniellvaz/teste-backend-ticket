@@ -4,6 +4,7 @@ import { database } from ".";
 async function main() {
   await migrate(database, {
     migrationsFolder: "./src/infra/database/migrations",
+    migrationsSchema: "public",
   });
 }
 

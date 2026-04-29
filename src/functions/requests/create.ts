@@ -1,5 +1,6 @@
+import { withRequestContext } from "@/infra/http/middlewares/request-context";
+import { withMiddleware } from "@/infra/http/middlewares/with-middleware";
 import { createRequestController } from "@/main/request/create-request";
-import { withMiddleware } from "@/shared/middlewares";
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from "aws-lambda";
 
 const lambdaHandler: APIGatewayProxyHandler = async (
@@ -11,4 +12,4 @@ const lambdaHandler: APIGatewayProxyHandler = async (
   return response;
 };
 
-export const handler = withMiddleware(lambdaHandler);
+export const handler = withMiddleware(withRequestContext(lambdaHandler));

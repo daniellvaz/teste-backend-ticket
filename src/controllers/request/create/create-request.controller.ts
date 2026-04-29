@@ -1,4 +1,4 @@
-import { HttpCreate } from "@/shared/http/HttpCreate";
+import { HttpCreate } from "@/infra/http/success/HttpCreate";
 import { CreateRequestUseCase } from "@/usecases/requests/create/create-request.usecase";
 import { createRequestBodySchema } from "./create-request.schema";
 

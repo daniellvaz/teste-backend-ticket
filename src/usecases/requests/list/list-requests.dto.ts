@@ -1,4 +1,4 @@
-import { Meta } from "@/shared/http/Meta";
+import { Meta } from "@/infra/http/success/Meta";
 
 export interface ListRequestsInputDTO {
   createdBy?: string;

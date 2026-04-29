@@ -13,7 +13,7 @@ import { CreateRequestDTO } from "@/domains/dtos/create-request.dto";
 
 import { Schema } from "@/infra/database";
 import { requests } from "@/infra/database/schemas";
-import { Meta } from "@/shared/http/Meta";
+import { Meta } from "@/infra/http/success/Meta";
 
 export class RequestRepository implements RequestGetway {
   constructor(private readonly database: NodePgDatabase<Schema>) {}

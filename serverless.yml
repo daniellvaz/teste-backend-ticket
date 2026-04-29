@@ -10,7 +10,14 @@ provider:
   region: sa-east-1
   stage: ${opt:stage, 'dev'}
 
+  logs:
+    httpApi: true
+
+  logRetentionInDays: 7
+
   environment:
+    SERVICE_NAME: ${self:service}
+    STAGE: ${self:provider.stage}
     DATABASE_URL:
       Fn::Join:
         - ""
@@ -31,6 +38,8 @@ custom:
 functions:
   listAllRequests:
     handler: src/functions/requests/list.handler
+    logs:
+      logGroup: /aws/lambda/${self:service}-${self:provider.stage}-listAllRequests
     events:
       - httpApi:
           path: /requests
@@ -38,6 +47,8 @@ functions:
 
   listOneRequest:
     handler: src/functions/requests/list-one.handler
+    logs:
+      logGroup: /aws/lambda/${self:service}-${self:provider.stage}-listOneRequest
     events:
       - httpApi:
           path: /requests/{id}
@@ -45,6 +56,8 @@ functions:
 
   createRequest:
     handler: src/functions/requests/create.handler
+    logs:
+      logGroup: /aws/lambda/${self:service}-${self:provider.stage}-createRequest
     events:
       - httpApi:
           path: /requests

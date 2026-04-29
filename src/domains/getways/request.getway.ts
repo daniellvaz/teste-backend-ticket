@@ -1,4 +1,4 @@
-import { Meta } from "@/shared/http/Meta";
+import { Meta } from "@/infra/http/success/Meta";
 import { CreateRequestDTO } from "../dtos/create-request.dto";
 import { Request } from "../entities/request.entity";
 

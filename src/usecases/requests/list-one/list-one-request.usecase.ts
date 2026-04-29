@@ -1,5 +1,5 @@
 import { RequestGetway } from "@/domains/getways/request.getway";
-import { NotFound } from "@/shared/errors/NotFound";
+import { NotFound } from "@/infra/http/errors/NotFound";
 import { UseCase } from "@/usecases/usecase";
 import {
   ListOneRequestInputDTO,

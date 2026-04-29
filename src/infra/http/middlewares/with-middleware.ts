@@ -1,8 +1,9 @@
 import { Handler } from "aws-lambda";
 import { ZodError } from "zod";
-import { BadRequest } from "../errors/BadRequest";
-import { NotFound } from "../errors/NotFound";
-import { ServerError } from "../errors/ServerError";
+
+import { BadRequest } from "@/infra/http/errors/BadRequest";
+import { NotFound } from "@/infra/http/errors/NotFound";
+import { ServerError } from "@/infra/http/errors/ServerError";
 
 export const withMiddleware = (handler: Handler): Handler => {
   return async (event: any, context: any) => {

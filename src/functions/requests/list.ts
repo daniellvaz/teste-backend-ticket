@@ -1,6 +1,8 @@
-import { listRequestsController } from "@/main/request/list";
-import { withMiddleware } from "@/shared/middlewares";
 import { LambdaFunctionURLEvent, LambdaFunctionURLHandler } from "aws-lambda";
+
+import { withRequestContext } from "@/infra/http/middlewares/request-context";
+import { withMiddleware } from "@/infra/http/middlewares/with-middleware";
+import { listRequestsController } from "@/main/request/list";
 
 const lambdaHandler: LambdaFunctionURLHandler = async (
   event: LambdaFunctionURLEvent,
@@ -12,4 +14,4 @@ const lambdaHandler: LambdaFunctionURLHandler = async (
   return result;
 };
 
-export const handler = withMiddleware(lambdaHandler);
+export const handler = withRequestContext(withMiddleware(lambdaHandler));

@@ -1,4 +1,4 @@
-import { HttpSuccess } from "@/shared/http/HttpSuccess";
+import { HttpSuccess } from "@/infra/http/success/HttpSuccess";
 import { ListRequestsUseCase } from "@/usecases/requests/list/list-requests.usecase";
 
 import { APIGatewayProxyEventQueryStringParameters } from "aws-lambda";
